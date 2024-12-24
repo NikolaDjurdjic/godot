@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2uw7enl7iwgm"]
+
+[ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_wu8yq"]
+[ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="2_orfs3"]
+[ext_resource type="Script" path="res://scripts/start_level_1.gd" id="3_c2jtx"]
+[ext_resource type="Script" path="res://scripts/start_level_2.gd" id="4_6tgex"]
+[ext_resource type="Script" path="res://scripts/level_1_label.gd" id="5_aa7g7"]
+[ext_resource type="Script" path="res://scripts/go_home.gd" id="5_r37md"]
+[ext_resource type="Script" path="res://scripts/level_2_label.gd" id="6_eha3i"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_y0lrp"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_dhk1l"]
+events = [SubResource("InputEventKey_y0lrp")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tp4yx"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_dnneo"]
+events = [SubResource("InputEventKey_tp4yx")]
+
+[node name="LevelSelect" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 80.0
+offset_right = 368.0
+offset_bottom = 160.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_wu8yq")
+theme_override_font_sizes/font_size = 64
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -52.0
+offset_right = 294.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="level1" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_orfs3")
+shortcut = SubResource("Shortcut_dhk1l")
+text = "1"
+script = ExtResource("3_c2jtx")
+
+[node name="level2" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_orfs3")
+disabled = true
+shortcut = SubResource("Shortcut_dnneo")
+text = "2"
+script = ExtResource("4_6tgex")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 45
+
+[node name="level_1_label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "0 coins collected"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_aa7g7")
+
+[node name="level_2_label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "0 coins collected"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_eha3i")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(160, 80)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -148.0
+offset_right = 80.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "BACK"
+script = ExtResource("5_r37md")
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/level1" to="CanvasLayer/HBoxContainer/VBoxContainer/level1" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/level2" to="CanvasLayer/HBoxContainer/VBoxContainer/level2" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/HBoxContainer/VBoxContainer/level2" to="CanvasLayer/HBoxContainer/VBoxContainer/level2" method="_on_ready"]
+[connection signal="ready" from="CanvasLayer/HBoxContainer/VBoxContainer2/level_1_label" to="CanvasLayer/HBoxContainer/VBoxContainer2/level_1_label" method="_on_ready"]
+[connection signal="ready" from="CanvasLayer/HBoxContainer/VBoxContainer2/level_2_label" to="CanvasLayer/HBoxContainer/VBoxContainer2/level_2_label" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

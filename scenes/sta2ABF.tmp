@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4yxhuxkp0cpr"]
+
+[ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_6dfhg"]
+[ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_gjevg"]
+[ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="2_yae0m"]
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="3_ix6ti"]
+[ext_resource type="Script" path="res://scripts/options.gd" id="4_5scre"]
+[ext_resource type="Script" path="res://scripts/exit.gd" id="4_eixeu"]
+[ext_resource type="Script" path="res://addons/AdmobPlugin/Admob.gd" id="7_pfb0p"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_y0lrp"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_0owrt"]
+events = [SubResource("InputEventKey_y0lrp")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tp4yx"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_tanvx"]
+events = [SubResource("InputEventKey_tp4yx")]
+
+[node name="Start Menu" type="Node2D"]
+position = Vector2(3, 0)
+script = ExtResource("1_6dfhg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 80.0
+offset_right = 420.0
+offset_bottom = 144.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_gjevg")
+theme_override_font_sizes/font_size = 64
+text = "BEST GAME EVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -438.0
+offset_right = 420.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="start" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_yae0m")
+shortcut = SubResource("Shortcut_0owrt")
+text = "START GAME"
+script = ExtResource("3_ix6ti")
+
+[node name="options" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_yae0m")
+shortcut = SubResource("Shortcut_0owrt")
+text = "OPTIONS"
+script = ExtResource("4_5scre")
+
+[node name="exit" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_yae0m")
+shortcut = SubResource("Shortcut_tanvx")
+text = "EXIT GAME"
+script = ExtResource("4_eixeu")
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "ADS"
+
+[node name="Admob" type="Node" parent="."]
+script = ExtResource("7_pfb0p")
+debug_application_id = "ca-app-pub-3940256099942544/9257395921"
+debug_banner_id = "ca-app-pub-3940256099942544/9214589741"
+debug_interstitial_id = "ca-app-pub-3940256099942544/1033173712"
+debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
+debug_rewarded_interstitial_id = "ca-app-pub-3940256099942544/5354046379"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/start" to="CanvasLayer/VBoxContainer/start" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/VBoxContainer/start" to="CanvasLayer/VBoxContainer/start" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/options" to="CanvasLayer/VBoxContainer/options" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/exit" to="CanvasLayer/VBoxContainer/exit" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="initialization_completed" from="Admob" to="." method="_on_admob_initialization_completed"]
