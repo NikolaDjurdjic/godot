@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://m3r4wi4771ct"]
+
+[ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_m0ra0"]
+[ext_resource type="Script" path="res://scripts/char_0.gd" id="2_4gpv4"]
+[ext_resource type="Texture2D" uid="uid://dkvmi6t3bk0md" path="res://assets/sprites/knight_select.png" id="2_nuctn"]
+[ext_resource type="Script" path="res://scripts/char_1.gd" id="3_q7hm6"]
+[ext_resource type="Texture2D" uid="uid://cdu81i0tojfu1" path="res://assets/sprites/merlin_select.png" id="3_q6482"]
+[ext_resource type="Script" path="res://scripts/h_box_container_character.gd" id="4_34ics"]
+[ext_resource type="Texture2D" uid="uid://uyqbkmeja6ro" path="res://assets/sprites/morgan_select.png" id="4_n2tqf"]
+[ext_resource type="Script" path="res://scripts/go_home.gd" id="4_p0jcl"]
+[ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="6_41624"]
+[ext_resource type="Script" path="res://scripts/char_2.gd" id="7_vce1k"]
+[ext_resource type="Texture2D" uid="uid://jsq6cr87q71x" path="res://assets/backgrounds/forest_bg.jpg" id="8_2ot2j"]
+
+[node name="Character" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 80.0
+offset_right = 368.0
+offset_bottom = 160.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_m0ra0")
+theme_override_font_sizes/font_size = 64
+text = "CHARACTER SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -67.5
+offset_right = 191.5
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme_override_constants/separation = 38
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_nuctn")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_q6482")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_n2tqf")
+
+[node name="HBoxContainerCharacter" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 39
+script = ExtResource("4_34ics")
+
+[node name="char0" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainerCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_41624")
+text = "SELECT"
+script = ExtResource("2_4gpv4")
+
+[node name="char1" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainerCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_41624")
+text = "SELECT
+"
+script = ExtResource("3_q7hm6")
+
+[node name="char2" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainerCharacter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_41624")
+text = "SELECT"
+script = ExtResource("7_vce1k")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(160, 80)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -148.0
+offset_right = 80.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("6_41624")
+text = "BACK"
+script = ExtResource("4_p0jcl")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_2ot2j")
+expand_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char0" to="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char0" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char0" to="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char0" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char1" to="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char1" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char2" to="CanvasLayer/VBoxContainer/HBoxContainerCharacter/char2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

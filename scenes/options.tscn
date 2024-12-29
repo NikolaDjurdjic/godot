@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcapqtxaimsfe"]
+[gd_scene load_steps=7 format=3 uid="uid://dcapqtxaimsfe"]
 
 [ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_fpdh3"]
+[ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="2_3mwp1"]
 [ext_resource type="Script" path="res://scripts/delete_data.gd" id="2_hrmu0"]
 [ext_resource type="Script" path="res://scripts/music_slider.gd" id="2_pmouw"]
 [ext_resource type="Script" path="res://scripts/go_home.gd" id="3_wxdua"]
+[ext_resource type="Texture2D" uid="uid://jsq6cr87q71x" path="res://assets/backgrounds/forest_bg.jpg" id="5_fs6v5"]
 
 [node name="Options" type="Node2D"]
 
@@ -42,6 +44,7 @@ alignment = 1
 [node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3mwp1")
 text = "DELETE USER DATA"
 script = ExtResource("2_hrmu0")
 
@@ -51,6 +54,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3mwp1")
 text = "MASTER"
 horizontal_alignment = 1
 
@@ -68,6 +72,7 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3mwp1")
 text = "MUSIC"
 horizontal_alignment = 1
 
@@ -84,6 +89,7 @@ layout_mode = 2
 
 [node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3mwp1")
 text = "SFX"
 horizontal_alignment = 1
 
@@ -103,8 +109,20 @@ custom_minimum_size = Vector2(160, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_3mwp1")
 text = "BACK"
 script = ExtResource("3_wxdua")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_fs6v5")
+expand_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button2" to="CanvasLayer/VBoxContainer/Button2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="CanvasLayer/VBoxContainer/Button" method="_on_pressed"]

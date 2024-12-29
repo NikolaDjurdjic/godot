@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2uw7enl7iwgm"]
+[gd_scene load_steps=9 format=3 uid="uid://b2uw7enl7iwgm"]
 
 [ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_wu8yq"]
 [ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="2_orfs3"]
@@ -7,20 +7,7 @@
 [ext_resource type="Script" path="res://scripts/level_1_label.gd" id="5_aa7g7"]
 [ext_resource type="Script" path="res://scripts/go_home.gd" id="5_r37md"]
 [ext_resource type="Script" path="res://scripts/level_2_label.gd" id="6_eha3i"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_y0lrp"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="Shortcut" id="Shortcut_dhk1l"]
-events = [SubResource("InputEventKey_y0lrp")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_tp4yx"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_dnneo"]
-events = [SubResource("InputEventKey_tp4yx")]
+[ext_resource type="Texture2D" uid="uid://jsq6cr87q71x" path="res://assets/backgrounds/forest_bg.jpg" id="8_5x6ct"]
 
 [node name="LevelSelect" type="Node2D"]
 
@@ -61,7 +48,9 @@ mouse_filter = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 0
+theme_override_constants/separation = 45
 
 [node name="level1" type="Button" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -69,7 +58,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2_orfs3")
-shortcut = SubResource("Shortcut_dhk1l")
 text = "1"
 script = ExtResource("3_c2jtx")
 
@@ -80,26 +68,27 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2_orfs3")
 disabled = true
-shortcut = SubResource("Shortcut_dnneo")
 text = "2"
 script = ExtResource("4_6tgex")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 45
 
 [node name="level_1_label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_orfs3")
 text = "0 coins collected"
-horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 script = ExtResource("5_aa7g7")
 
 [node name="level_2_label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_orfs3")
 text = "0 coins collected"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -120,8 +109,20 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_orfs3")
 text = "BACK"
 script = ExtResource("5_r37md")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_5x6ct")
+expand_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/level1" to="CanvasLayer/HBoxContainer/VBoxContainer/level1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/level2" to="CanvasLayer/HBoxContainer/VBoxContainer/level2" method="_on_pressed"]

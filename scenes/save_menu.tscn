@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxkqlgtjk2wyg"]
+
+[ext_resource type="FontFile" uid="uid://mhhsuiedhk5o" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_62cjt"]
+[ext_resource type="Script" path="res://scripts/go_home.gd" id="3_0b4le"]
+[ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="3_0hi3c"]
+[ext_resource type="Script" path="res://scripts/slot_0.gd" id="3_dhy50"]
+[ext_resource type="Script" path="res://scripts/slot_1.gd" id="4_ss2xl"]
+[ext_resource type="Script" path="res://scripts/slot_2.gd" id="5_13lvy"]
+[ext_resource type="Texture2D" uid="uid://jsq6cr87q71x" path="res://assets/backgrounds/forest_bg.jpg" id="8_alqcl"]
+
+[node name="Save Menu" type="Node2D"]
+position = Vector2(3, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 80.0
+offset_right = 420.0
+offset_bottom = 144.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_62cjt")
+theme_override_font_sizes/font_size = 64
+text = "SELECT SLOT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -438.0
+offset_right = 420.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="slot0" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_0hi3c")
+text = "SLOT 0"
+script = ExtResource("3_dhy50")
+
+[node name="slot1" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_0hi3c")
+text = "SLOT 1"
+script = ExtResource("4_ss2xl")
+
+[node name="slot2" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_0hi3c")
+text = "SLOT 2"
+script = ExtResource("5_13lvy")
+
+[node name="exit" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_0hi3c")
+text = "BACK"
+script = ExtResource("3_0b4le")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_alqcl")
+expand_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/slot0" to="CanvasLayer/VBoxContainer/slot0" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/VBoxContainer/slot0" to="CanvasLayer/VBoxContainer/slot0" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/slot1" to="CanvasLayer/VBoxContainer/slot1" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/VBoxContainer/slot1" to="CanvasLayer/VBoxContainer/slot1" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/slot2" to="CanvasLayer/VBoxContainer/slot2" method="_on_pressed"]
+[connection signal="ready" from="CanvasLayer/VBoxContainer/slot2" to="CanvasLayer/VBoxContainer/slot2" method="_on_ready"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/exit" to="CanvasLayer/VBoxContainer/exit" method="_on_pressed"]

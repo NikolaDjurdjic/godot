@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://durrb86ea0ofw"]
+[gd_scene load_steps=11 format=3 uid="uid://durrb86ea0ofw"]
 
 [ext_resource type="Texture2D" uid="uid://r3jl271iw5hj" path="res://assets/sprites/shadedDark24.png" id="1_lrymu"]
 [ext_resource type="Texture2D" uid="uid://gkjaseldu03h" path="res://assets/sprites/shadedDark25.png" id="2_kojgf"]
 [ext_resource type="Texture2D" uid="uid://bgtjupgwr6al" path="res://assets/sprites/shadedDark26.png" id="3_qtpib"]
 [ext_resource type="Texture2D" uid="uid://2yhre4m2k8kk" path="res://assets/sprites/shadedDark28.png" id="4_w6lkv"]
+[ext_resource type="Texture2D" uid="uid://ydusj3grygwo" path="res://assets/sprites/shadedDark14.png" id="5_3j3xb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqqh3"]
 radius = 67.42
@@ -16,6 +17,9 @@ radius = 70.83
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrktd"]
 radius = 70.83
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ngy"]
+size = Vector2(70, 70)
 
 [node name="TouchControls" type="CanvasLayer"]
 
@@ -64,3 +68,18 @@ scale = Vector2(1.25, 1.25)
 texture_normal = ExtResource("4_w6lkv")
 shape = SubResource("CircleShape2D_wrktd")
 action = "roll"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="pause" type="TouchScreenButton" parent="HBoxContainer3"]
+scale = Vector2(1.25, 1.25)
+texture_normal = ExtResource("5_3j3xb")
+shape = SubResource("RectangleShape2D_t2ngy")
+action = "esc"

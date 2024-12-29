@@ -1,16 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://qytae3fiwmc2"]
+[gd_scene load_steps=23 format=3 uid="uid://qytae3fiwmc2"]
 
+[ext_resource type="Script" path="res://scripts/game_level_1.gd" id="1_fumif"]
 [ext_resource type="FontFile" uid="uid://ccjnwyp83pnjs" path="res://assets/fonts/PixelOperator8.ttf" id="3_qfmdk"]
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="3_xced2"]
 [ext_resource type="Script" path="res://scripts/level_label.gd" id="4_nmcb4"]
 [ext_resource type="Texture2D" uid="uid://cgnu73chp72gr" path="res://assets/sprites/world_tileset.png" id="4_wq8mm"]
-[ext_resource type="PackedScene" uid="uid://dku64iw5hu2sk" path="res://scenes/player.tscn" id="5_f0wup"]
+[ext_resource type="PackedScene" uid="uid://dku64iw5hu2sk" path="res://scenes/player_0.tscn" id="5_f0wup"]
 [ext_resource type="PackedScene" uid="uid://cakgfrojt6p0t" path="res://scenes/killzone.tscn" id="6_f8lne"]
 [ext_resource type="PackedScene" uid="uid://dkr5b2q4klkb0" path="res://scenes/coin.tscn" id="7_yem16"]
 [ext_resource type="PackedScene" uid="uid://cwippf3ewmrkm" path="res://scenes/platform.tscn" id="8_yae1c"]
 [ext_resource type="PackedScene" uid="uid://bssoixynq4hax" path="res://scenes/slime.tscn" id="9_6fkcj"]
 [ext_resource type="PackedScene" uid="uid://deloj6y4s0k61" path="res://scenes/finish.tscn" id="10_w2wh0"]
 [ext_resource type="PackedScene" uid="uid://durrb86ea0ofw" path="res://scenes/touch_controls.tscn" id="12_4qbci"]
+[ext_resource type="PackedScene" uid="uid://clnmvggd8ci0j" path="res://scenes/pause.tscn" id="13_21rux"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82bsg"]
 bg_color = Color(1, 0, 0, 1)
@@ -229,6 +231,7 @@ _data = {
 }
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_fumif")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 0
@@ -428,3 +431,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer/HBoxContainer"]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Pause" parent="CanvasLayer2" instance=ExtResource("13_21rux")]

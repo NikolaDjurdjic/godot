@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwfnjoxbwj44e"
-path="res://.godot/imported/fruit.png-3735163b668af10c2b35b52cba81b68a.ctex"
+uid="uid://bowcyceqrd4ud"
+path="res://.godot/imported/morganLeFay_.png-8dd54ca50e987d0fce60989887598e68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fruit.png"
-dest_files=["res://.godot/imported/fruit.png-3735163b668af10c2b35b52cba81b68a.ctex"]
+source_file="res://assets/sprites/morganLeFay_.png"
+dest_files=["res://.godot/imported/morganLeFay_.png-8dd54ca50e987d0fce60989887598e68.ctex"]
 
 [params]
 

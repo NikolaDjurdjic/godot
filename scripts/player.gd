@@ -24,31 +24,32 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if animated_sprite_2d.is_playing() and animated_sprite_2d.animation=="hurt":
+	if animated_sprite_2d.is_playing() and animated_sprite_2d.animation.contains("hurt"):
 		is_dead=true
 		
 		death_label.visible = true
 		death_label2.visible = true
 		touch_controls.visible=false
 	
-	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
 	
-	# Handle jump.
+
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_dead and not is_rolling:
 		velocity.y = JUMP_VELOCITY
 		jump_audio.play(0)
 		
 	if Input.is_anything_pressed() and Engine.time_scale == 0.0:
 		Engine.time_scale = 1.0
+		GameManager.playAd()
 		get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
+
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	#Flip sprite
+
 	if not is_dead:
 		if direction > 0:
 			animated_sprite_2d.flip_h = false
@@ -68,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		player.set_collision_layer_value(2, true)
 		player.set_collision_layer_value(3, false)
 	
-	#Play animations
+
 	if not is_dead and not is_rolling:
 		if is_on_floor():
 			if direction == 0:
@@ -79,7 +80,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play("jump")
 	
 	
-	#Apply movement
+
 	if not is_dead:
 		if direction:
 			velocity.x = direction * SPEED
